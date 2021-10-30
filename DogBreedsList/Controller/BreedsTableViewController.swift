@@ -32,12 +32,12 @@ class BreedsTableViewController: UIViewController {
         self.view.backgroundColor = UIColor.mLightBlue()
         self.title = "Breeds List"
         self.view.addSubview(self.breedsTable)
-        self.populaArraydeDogsAtualizaTableView()
+        self.fillAndRefreshArrayOfDogs()
         self.createRightBarButton()
         
     }
     
-    func populaArraydeDogsAtualizaTableView() {
+    func fillAndRefreshArrayOfDogs() {
         
             api.getDogs(urlString: api.setDogsURL(), method: .GET, key: "5c904ece-d726-4d83-b209-b46426cfdace") { dogs in
                 DispatchQueue.main.async {
@@ -79,7 +79,7 @@ class BreedsTableViewController: UIViewController {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Attention!", message: mensagem, preferredStyle: .actionSheet)
             
-            let buttonTryAgain = UIAlertAction(title: "Tentar novamente", style: .default) { _ in self.populaArraydeDogsAtualizaTableView()
+            let buttonTryAgain = UIAlertAction(title: "Tentar novamente", style: .default) { _ in self.fillAndRefreshArrayOfDogs()
             }
                 
 //            let buttonOpenDownloaded = UIAlertAction(title: "Open Downloaded Breeds", style: .default) { _ in
@@ -110,13 +110,13 @@ extension BreedsTableViewController: UITableViewDataSource {
         cell?.accessoryType = .disclosureIndicator
         
         cell?.labelTitle.text = self.arrayOfDogs[indexPath.row].name
-        cell?.labelTitle.numberOfLines = 0
+        cell?.labelTitle.numberOfLines = 2
         cell?.labelDescription.text = self.arrayOfDogs[indexPath.row].temperament
         cell?.labelDescription.adjustsFontSizeToFitWidth = false
         cell?.imageBreed.contentMode = .scaleAspectFill
-        cell?.imageBreed.layer.cornerRadius = 10.0
-        cell?.labelDescription.numberOfLines = 0
-        cell?.labelTitle.numberOfLines = 0
+        cell?.imageBreed.layer.cornerRadius = 20.0
+        cell?.labelDescription.numberOfLines = 3
+        cell?.backgroundColor = UIColor.mWhite()
         
         
         if let image = self.arrayOfDogs[indexPath.row].image?.url {
@@ -135,22 +135,22 @@ extension BreedsTableViewController: UITableViewDataSource {
 //        let view = UIView()
 //        let title = UILabel(frame: CGRect(x: 160.0, y: 40.0, width: 100, height: 30.0))
 //        title.text = "List of dogs"
-//        title.textColor = UIColor.mBranco()
+//        title.textColor = UIColor.mWhite()
 //        view.addSubview(title)
-//        view.backgroundColor = UIColor.mRosa()
+//        view.backgroundColor = UIColor.mPink()
 //        return view
 //    }
-    
+//
 //    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //        return "List of Dogs"
 //    }
-    
+//
 //    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 //        return 100
 //    }
 //
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 127.0
+        return 146.0
     }
 
 }
@@ -162,10 +162,7 @@ extension BreedsTableViewController: UITableViewDelegate {
         detail.touchedDog = self.arrayOfDogs[indexPath.row]
         self.show(detail, sender: nil)
         
-//        let dog = self.arrayOfDogs[indexPath.row]
-//        detail.
-//        //detail.touchedDog = self.arrayOfDogs[indexPath.row]
-//        self.navigationController?.pushViewController(detail, animated: true)
-////        pushViewController(detail, animated: true)
+//     self.navigationController?.pushViewController(detail, animated: true)
+
     }
 }

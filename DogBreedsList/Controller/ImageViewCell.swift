@@ -10,12 +10,11 @@ import SnapKit
 
 class ImageViewCell: UITableViewCell {
     
-    var uiiv_Image = UIImageView()
-    
+    var imageBreed = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.addSubview(self.uiiv_Image)
+        self.addSubview(self.imageBreed)
         self.backgroundColor = UIColor.mWhite()
     }
     
@@ -25,10 +24,10 @@ class ImageViewCell: UITableViewCell {
     
     func setImage (url: URL) {
 
-        self.uiiv_Image.layer.cornerRadius = 10.0
-        self.uiiv_Image.layer.masksToBounds = true
-        self.uiiv_Image.contentMode = .scaleAspectFit
-        self.uiiv_Image.kf.setImage(
+        self.imageBreed.layer.cornerRadius = 10.0
+        self.imageBreed.layer.masksToBounds = true
+        self.imageBreed.contentMode = .scaleAspectFit
+        self.imageBreed.kf.setImage(
                 with: url,
                 placeholder: UIImage(named: "dogplaceholder"),
                 options: [ .cacheOriginalImage],
@@ -37,7 +36,7 @@ class ImageViewCell: UITableViewCell {
                     
                 })
         
-        self.uiiv_Image.snp.makeConstraints { make in
+        self.imageBreed.snp.makeConstraints { make in
             make.top.equalTo(self).offset(10)
             make.bottom.equalTo(self).offset(-10)
             make.centerX.equalTo(self)
@@ -45,11 +44,6 @@ class ImageViewCell: UITableViewCell {
             make.width.equalTo(250)
             make.height.equalTo(250)
         }
-        
-        
     }
-    
-    
-    
 }
 

@@ -18,9 +18,9 @@ class BreedTableViewCell: UITableViewCell {
         
         labelTitle.snp.makeConstraints { make in
             
-            make.top.equalTo(self).offset(10)
-            make.left.equalTo(self).offset(10)
-            make.right.equalTo(imageBreed.snp.left).offset(-10)
+            make.top.equalTo(self).offset(30)
+            make.left.equalTo(self).offset(30)
+            make.right.equalTo(imageBreed.snp.left).offset(-30)
             make.bottom.equalTo(labelDescription.snp.top).offset(-10)
             
         }
@@ -29,18 +29,19 @@ class BreedTableViewCell: UITableViewCell {
             
             make.top.equalTo(labelTitle.snp.bottom).offset(10)
             make.left.equalTo(labelTitle.snp.left).offset(0)
-            make.right.equalTo(imageBreed.snp.left).offset(-10)
-            make.bottom.greaterThanOrEqualTo(self).offset(-10)
-            
+            make.right.equalTo(imageBreed.snp.left).offset(-30)
+            make.bottom.greaterThanOrEqualTo(labelTitle.snp.bottom).offset(-10)
         }
         
         imageBreed.snp.makeConstraints { make in
             
             make.centerY.equalTo(self).offset(0)
-            make.right.equalTo(self).offset(-30)
+            make.right.equalTo(self).offset(-50)
             make.width.equalTo(100)
             make.height.equalTo(100)
         }
+        
+
         
         
     }

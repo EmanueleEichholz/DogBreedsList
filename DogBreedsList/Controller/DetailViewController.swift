@@ -91,26 +91,24 @@ extension DetailViewController: UITableViewDataSource {
             //quero fazer botao on/off
         case 8:
             let cellImage = ImageViewCell()
-            
             guard let urlString = touchedDog.image?.url else { return UITableViewCell() }
             guard let url = URL(string: urlString) else { return UITableViewCell() }
             cellImage.setImage(url: url)
-//            cell.backgroundColor = UIColor.mRosa()
             return cellImage
         default:
             return UITableViewCell()
-            
         }
         return cell
     }
 }
 
+
 extension DetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 7 {
-            guard let nome = touchedDog.name else { return }
-            self.saveUserDefaults(nome: nome)
+            guard let name = touchedDog.name else { return }
+            self.saveUserDefaults(nome: name)
         }
             
             //salvar no userdefaults = [elefante]
