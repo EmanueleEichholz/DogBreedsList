@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewColtroller: UIViewController {
+class HomeViewController: UIViewController {
     
     //MARK: Creating Title
     private lazy var titleLabel: UILabel = {
@@ -111,12 +111,12 @@ class HomeViewColtroller: UIViewController {
     
     
     //MARK: Giving Actions for buttons
+    
+    // Opening the main list with all breeds
     @objc func buttonAction(sender: UIButton!) {
-
         let breeds = BreedsTableViewController()
-        self.show(breeds, sender: nil)
-        print("Botao foi clicado")
-        
+        self.navigationController?.pushViewController(breeds, animated: true)
+        print("Botão foi clicado")
     }
 }
 

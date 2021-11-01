@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,19 +15,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TU7-KA-6oM">
+                                <rect key="frame" x="149" y="626" width="117" height="36"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="LOADING...">
+                                        <attributes>
+                                            <font key="NSFont" size="36" name="DINCondensed-Bold"/>
+                                            <font key="NSOriginalFont" size="36" name="DINCondensed-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="happydog" translatesAutoresizingMaskIntoConstraints="NO" id="qfJ-hD-1FV">
-                                <rect key="frame" x="85" y="325.5" width="244" height="255"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="255" id="TN6-3h-M5z"/>
-                                    <constraint firstAttribute="width" constant="244" id="nAJ-VM-zb5"/>
-                                </constraints>
+                                <rect key="frame" x="83" y="225" width="249" height="311"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="qfJ-hD-1FV" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="eAv-k5-aVA"/>
-                            <constraint firstItem="qfJ-hD-1FV" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="fxu-pX-VcO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="TU7-KA-6oM" secondAttribute="bottom" constant="200" id="2sS-6t-IL3"/>
+                            <constraint firstItem="qfJ-hD-1FV" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="83" id="5a7-nF-5OZ"/>
+                            <constraint firstItem="qfJ-hD-1FV" firstAttribute="top" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="181" id="Qad-Nv-ytL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="qfJ-hD-1FV" secondAttribute="trailing" constant="82" id="SP2-0x-n5s"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="TU7-KA-6oM" secondAttribute="trailing" constant="148" id="U7v-u2-xRT"/>
+                            <constraint firstItem="TU7-KA-6oM" firstAttribute="top" relation="lessThanOrEqual" secondItem="qfJ-hD-1FV" secondAttribute="bottom" constant="90" id="iFe-PO-fzR"/>
+                            <constraint firstItem="TU7-KA-6oM" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="149" id="li8-2d-vh6"/>
                         </constraints>
                     </view>
                 </viewController>

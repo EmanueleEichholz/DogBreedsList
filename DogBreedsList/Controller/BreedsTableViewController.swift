@@ -156,13 +156,10 @@ extension BreedsTableViewController: UITableViewDataSource {
 }
 
 extension BreedsTableViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detail = DetailViewController()
         detail.touchedDog = self.arrayOfDogs[indexPath.row]
-        self.show(detail, sender: nil)
-        
-//     self.navigationController?.pushViewController(detail, animated: true)
-
+        //self.show(detail, sender: nil)
+        self.navigationController?.pushViewController(detail, animated: true)
     }
 }
