@@ -4,15 +4,23 @@
 //
 //  Created by Emanuele Eichholz on 29/10/21.
 //
+
 import UIKit
 import Kingfisher
 
 class BreedsTableViewController: UIViewController {
     
+    let searchController = UISearchController(searchResultsController: nil)
     var arrayOfDogs: [Dog] = []
+    var filteredDogs: [Dog] = []
+    var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
     let api = API()
     let reusdeIdentifier = "cell"
     var favorites : Bool = false
+    
+    //MARK: SEARCH BAR
     
     lazy var breedsTable: UITableView = {
         var table = UITableView()
@@ -29,13 +37,27 @@ class BreedsTableViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureSearchBar()
         self.view.backgroundColor = UIColor.mLightBlue()
         self.title = "Breeds List"
         self.view.addSubview(self.breedsTable)
         self.fillAndRefreshArrayOfDogs()
-        self.createRightBarButton()
-        
+//        self.createRightBarButton()
     }
+    
+    func configureSearchBar() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Buscar personagens"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.fillAndRefreshArrayOfDogs()
+    }
+    
     
     func fillAndRefreshArrayOfDogs() {
         
@@ -57,23 +79,19 @@ class BreedsTableViewController: UIViewController {
             }
     }
     
-    
-    func createRightBarButton() {
-        
-        let heartImage = UIImage(systemName: "heart.fill")
-        
-        let rightButton = UIBarButtonItem(image: heartImage, style: UIBarButtonItem.Style.plain, target: self, action: #selector(getFavorites))
-        rightButton.tintColor = UIColor.mDarkBlue()
-        
-        self.navigationItem.rightBarButtonItem = rightButton
-    }
-        
-    @objc func getFavorites(){
-        let vc = BreedsTableViewController()
-        vc.favorites = true
-        self.show(vc, sender: nil)
-        
-    }
+//    func createRightBarButton() {
+//
+//        let heartImage = UIImage(systemName: "heart.fill")
+//        let rightButton = UIBarButtonItem(image: heartImage, style: UIBarButtonItem.Style.plain, target: self, action: #selector(getFavorites))
+//        rightButton.tintColor = UIColor.mDarkBlue()
+//        self.navigationItem.rightBarButtonItem = rightButton
+//    }
+//
+//    @objc func getFavorites(){
+//        let vc = BreedsTableViewController()
+//        vc.favorites = true
+//        self.show(vc, sender: nil)
+//    }
     
     func showAlertToUser(mensagem: String) {
         DispatchQueue.main.async {
@@ -131,6 +149,28 @@ extension BreedsTableViewController: UITableViewDataSource {
         return cell!
     }
     
+    
+//    func filterContentForSearchText(_ searchText: String,
+//                                    charactersName: [Dog]? = nil) {
+//        filteredDogs = arrayOfDogs.filter({ Dog in
+//            return (Dog.name?.lowercased().contais(searchText.lowercased()))
+//        })
+//        
+//        tableView.fillAndRefreshArrayOfDogs()
+//    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 146.0
+    }
+}
+          
+          
+//
+//          (candy: Candy) -> Bool in
+//        return candy.name.lowercased().contains(searchText.lowercased())
+//      }
+//        tableView.fillAndRefreshArrayOfDogs()
+//    }
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 //        let view = UIView()
 //        let title = UILabel(frame: CGRect(x: 160.0, y: 40.0, width: 100, height: 30.0))
@@ -148,18 +188,17 @@ extension BreedsTableViewController: UITableViewDataSource {
 //    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 //        return 100
 //    }
-//
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 146.0
-    }
 
-}
 
 extension BreedsTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detail = DetailViewController()
         detail.touchedDog = self.arrayOfDogs[indexPath.row]
-        //self.show(detail, sender: nil)
         self.navigationController?.pushViewController(detail, animated: true)
     }
+}
+
+extension BreedsTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+}
 }

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		40B4CD5B272C6785001E4620 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B4CD5A272C6785001E4620 /* AppDelegate.swift */; };
-		40B4CD5D272C6785001E4620 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B4CD5C272C6785001E4620 /* SceneDelegate.swift */; };
 		40B4CD65272C6785001E4620 /* DogBreedsList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40B4CD63272C6785001E4620 /* DogBreedsList.xcdatamodeld */; };
 		40B4CD67272C6788001E4620 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40B4CD66272C6788001E4620 /* Assets.xcassets */; };
 		40B4CD6A272C6788001E4620 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40B4CD68272C6788001E4620 /* LaunchScreen.storyboard */; };
@@ -32,8 +31,7 @@
 		40B4CDBB272CAC20001E4620 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 40B4CDBA272CAC20001E4620 /* Kingfisher */; };
 		40B4CDBE272CAC40001E4620 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 40B4CDBD272CAC40001E4620 /* SnapKit */; };
 		40B4CDC0272CACAE001E4620 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B4CDBF272CACAE001E4620 /* DetailViewController.swift */; };
-		40B4CDC2272CAD0D001E4620 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B4CDC1272CAD0D001E4620 /* UIViewController.swift */; };
-		40B4CDC4272CAD34001E4620 /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B4CDC3272CAD34001E4620 /* ImageViewCell.swift */; };
+		40B4CDC4272CAD34001E4620 /* ImageDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B4CDC3272CAD34001E4620 /* ImageDetailViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +54,6 @@
 /* Begin PBXFileReference section */
 		40B4CD57272C6785001E4620 /* DogBreedsList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogBreedsList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40B4CD5A272C6785001E4620 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		40B4CD5C272C6785001E4620 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		40B4CD64272C6785001E4620 /* DogBreedsList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DogBreedsList.xcdatamodel; sourceTree = "<group>"; };
 		40B4CD66272C6788001E4620 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40B4CD69272C6788001E4620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -81,8 +78,7 @@
 		40B4CDB5272CAB40001E4620 /* BreedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedTableViewCell.swift; sourceTree = "<group>"; };
 		40B4CDB6272CAB40001E4620 /* BreedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BreedTableViewCell.xib; sourceTree = "<group>"; };
 		40B4CDBF272CACAE001E4620 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		40B4CDC1272CAD0D001E4620 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		40B4CDC3272CAD34001E4620 /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
+		40B4CDC3272CAD34001E4620 /* ImageDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				40B4CD5A272C6785001E4620 /* AppDelegate.swift */,
-				40B4CD5C272C6785001E4620 /* SceneDelegate.swift */,
 				40B4CD68272C6788001E4620 /* LaunchScreen.storyboard */,
 			);
 			path = Application;
@@ -212,8 +207,6 @@
 				40B4CD92272C7128001E4620 /* HomeViewController.swift */,
 				40B4CD96272C8DA1001E4620 /* BreedsTableViewController.swift */,
 				40B4CDBF272CACAE001E4620 /* DetailViewController.swift */,
-				40B4CDC1272CAD0D001E4620 /* UIViewController.swift */,
-				40B4CDC3272CAD34001E4620 /* ImageViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -223,6 +216,7 @@
 			children = (
 				40B4CDB5272CAB40001E4620 /* BreedTableViewCell.swift */,
 				40B4CDB6272CAB40001E4620 /* BreedTableViewCell.xib */,
+				40B4CDC3272CAD34001E4620 /* ImageDetailViewCell.swift */,
 			);
 			path = BreedTableViewCell;
 			sourceTree = "<group>";
@@ -368,16 +362,14 @@
 			files = (
 				40B4CDA5272C8F4D001E4620 /* DogImage.swift in Sources */,
 				40B4CDC0272CACAE001E4620 /* DetailViewController.swift in Sources */,
-				40B4CDC2272CAD0D001E4620 /* UIViewController.swift in Sources */,
 				40B4CD65272C6785001E4620 /* DogBreedsList.xcdatamodeld in Sources */,
 				40B4CDA7272C8F5F001E4620 /* HTTPMethod.swift in Sources */,
 				40B4CD97272C8DA1001E4620 /* BreedsTableViewController.swift in Sources */,
 				40B4CDA9272C8F8B001E4620 /* DogAPI.swift in Sources */,
 				40B4CD5B272C6785001E4620 /* AppDelegate.swift in Sources */,
 				40B4CDAD272C90E4001E4620 /* MyUIColor.swift in Sources */,
-				40B4CD5D272C6785001E4620 /* SceneDelegate.swift in Sources */,
 				40B4CDB7272CAB40001E4620 /* BreedTableViewCell.swift in Sources */,
-				40B4CDC4272CAD34001E4620 /* ImageViewCell.swift in Sources */,
+				40B4CDC4272CAD34001E4620 /* ImageDetailViewCell.swift in Sources */,
 				40B4CD9B272C8EDC001E4620 /* API.swift in Sources */,
 				40B4CDA1272C8F20001E4620 /* DogHeight.swift in Sources */,
 				40B4CDA3272C8F30001E4620 /* DogWeight.swift in Sources */,

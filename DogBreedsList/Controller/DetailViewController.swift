@@ -30,9 +30,9 @@ class DetailViewController: UIViewController {
         self.view.addSubview(self.uitv_Tabela)
         self.title = touchedDog.name
         self.view.backgroundColor = UIColor.mWhite()
-        self.getUserDefaults()
     }
 }
+
 
 extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,7 +41,6 @@ extension DetailViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: reuseIdentifier)
         cell.selectionStyle = .none
         cell.textLabel?.textColor = UIColor.mLightBlue()
@@ -90,7 +89,7 @@ extension DetailViewController: UITableViewDataSource {
             cell.selectionStyle = .gray
             //quero fazer botao on/off
         case 8:
-            let cellImage = ImageViewCell()
+            let cellImage = ImageDetailViewCell()
             guard let urlString = touchedDog.image?.url else { return UITableViewCell() }
             guard let url = URL(string: urlString) else { return UITableViewCell() }
             cellImage.setImage(url: url)
@@ -106,11 +105,11 @@ extension DetailViewController: UITableViewDataSource {
 extension DetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 7 {
-            guard let name = touchedDog.name else { return }
-            self.saveUserDefaults(nome: name)
-        }
-            
+//        if indexPath.row == 7 {
+//            guard let name = touchedDog.name else { return }
+//            self.saveUserDefaults(nome: name)
+//        }
+//
             //salvar no userdefaults = [elefante]
             //dicionario (key, value) = (elefantes, [Elefante])
             //criar uma viewcontroller para mostrar os favoritados
