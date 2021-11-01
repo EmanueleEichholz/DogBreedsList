@@ -1,3 +1,15 @@
+Esse projeto utilizada a API "The Dog API".
+
+O objetivo do aplicativo é ser uma lista de consulta de diversas raças de cachorros, dando ao usuário a possibilidade de favoritar as suas raças prediletas para poder consultá-las mais facilmente, inclusive sem conexão de internet.
+
+
+
+
+
+
+
+
+
 Arrumar:
 
 - A barra de search nao esta funcionando
@@ -13,9 +25,6 @@ Falta implementar:
     * todos devem ficar como padrao em off
     * se mudar para on salvar pros favoritos e adicionar um alerta com o aviso que foi adicionado
     * se mudar pra off, retirar dos favoritos e adicionar um alerta com o aviso que foi retirado
-
-
-
 
 
 Se der tempo:
