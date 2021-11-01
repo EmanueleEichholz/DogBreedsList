@@ -82,6 +82,7 @@
 		40B4CDC3272CAD34001E4620 /* ImageDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewCell.swift; sourceTree = "<group>"; };
 		40F057E027301FE500B20D99 /* DataBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseController.swift; sourceTree = "<group>"; };
 		40F057E2273031A400B20D99 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		40F057E427308DA500B20D99 /* Dúvidas */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Dúvidas"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				40F057E2273031A400B20D99 /* README.md */,
+				40F057E427308DA500B20D99 /* Dúvidas */,
 				40B4CD59272C6785001E4620 /* DogBreedsList */,
 				40B4CD73272C6789001E4620 /* DogBreedsListTests */,
 				40B4CD7D272C6789001E4620 /* DogBreedsListUITests */,
