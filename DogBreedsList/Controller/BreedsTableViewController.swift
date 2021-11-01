@@ -11,8 +11,10 @@ import Kingfisher
 class BreedsTableViewController: UIViewController {
     
     let searchController = UISearchController(searchResultsController: nil)
+    let context = DataBaseController.persistentContainer.viewContext
     var arrayOfDogs: [Dog] = []
     var filteredDogs: [Dog] = []
+    var savedDogs: [Dog] = []
     var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
@@ -42,7 +44,7 @@ class BreedsTableViewController: UIViewController {
         self.title = "Breeds List"
         self.view.addSubview(self.breedsTable)
         self.fillAndRefreshArrayOfDogs()
-//        self.createRightBarButton()
+        self.createRightBarButton()
     }
     
     func configureSearchBar() {
@@ -56,11 +58,14 @@ class BreedsTableViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.fillAndRefreshArrayOfDogs()
+        
     }
     
     
     func fillAndRefreshArrayOfDogs() {
         
+        if !favorites {
+            
             api.getDogs(urlString: api.setDogsURL(), method: .GET, key: "5c904ece-d726-4d83-b209-b46426cfdace") { dogs in
                 DispatchQueue.main.async {
                     self.arrayOfDogs = dogs
@@ -77,21 +82,30 @@ class BreedsTableViewController: UIViewController {
                     break;
                 }
             }
+        } else {
+//            do {
+//                self.savedDogs =  try DataBaseController.persistentContainer.viewContext.fetch(DataDog.fetchRequest())
+//            } catch {
+//                print("Falha ao trazer as informações do banco de dados.")
+//            }
+            
+        }
+        self.breedsTable.reloadData()
     }
     
-//    func createRightBarButton() {
-//
-//        let heartImage = UIImage(systemName: "heart.fill")
-//        let rightButton = UIBarButtonItem(image: heartImage, style: UIBarButtonItem.Style.plain, target: self, action: #selector(getFavorites))
-//        rightButton.tintColor = UIColor.mDarkBlue()
-//        self.navigationItem.rightBarButtonItem = rightButton
-//    }
-//
-//    @objc func getFavorites(){
-//        let vc = BreedsTableViewController()
-//        vc.favorites = true
-//        self.show(vc, sender: nil)
-//    }
+    func createRightBarButton() {
+
+        let heartImage = UIImage(systemName: "heart.fill")
+        let rightButton = UIBarButtonItem(image: heartImage, style: UIBarButtonItem.Style.plain, target: self, action: #selector(getFavorites))
+        rightButton.tintColor = UIColor.mDarkBlue()
+        self.navigationItem.rightBarButtonItem = rightButton
+    }
+
+    @objc func getFavorites(){
+        let list = BreedsTableViewController()
+        list.favorites = true
+        self.show(list, sender: nil)
+    }
     
     func showAlertToUser(mensagem: String) {
         DispatchQueue.main.async {
@@ -100,15 +114,16 @@ class BreedsTableViewController: UIViewController {
             let buttonTryAgain = UIAlertAction(title: "Tentar novamente", style: .default) { _ in self.fillAndRefreshArrayOfDogs()
             }
                 
-//            let buttonOpenDownloaded = UIAlertAction(title: "Open Downloaded Breeds", style: .default) { _ in
-//                let favoritos = FavoritesViewController()
-//                self.navigationController?.pushViewController(favorites, animated: true)
-//            }
+            let buttonOpenDownloaded = UIAlertAction(title: "Open Downloaded Breeds", style: .default) { _ in
+                let list = BreedsTableViewController()
+                list.favorites = true
+                self.navigationController?.pushViewController(list, animated: true)
+            }
             
             let buttonGotIt = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
                 
             alert.addAction(buttonTryAgain)
-//            alert.addAction(buttonOpenDownloaded)
+            alert.addAction(buttonOpenDownloaded)
             alert.addAction(buttonGotIt)
             
             self.present(alert, animated: true, completion: nil)
@@ -151,26 +166,18 @@ extension BreedsTableViewController: UITableViewDataSource {
     
     
 //    func filterContentForSearchText(_ searchText: String,
-//                                    charactersName: [Dog]? = nil) {
-//        filteredDogs = arrayOfDogs.filter({ Dog in
-//            return (Dog.name?.lowercased().contais(searchText.lowercased()))
-//        })
-//        
-//        tableView.fillAndRefreshArrayOfDogs()
+//                                    dogsName: [Dog]? = nil) {
+//        filteredDogs = arrayOfDogs.filter { (arrayOfDogs: Dog ) -> Bool in
+//            return (arrayOfDogs.name?.lowercased().contains(searchText.lowercased()))
+//        }
+//        tableView.reloadData()
 //    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 146.0
     }
 }
-          
-          
-//
-//          (candy: Candy) -> Bool in
-//        return candy.name.lowercased().contains(searchText.lowercased())
-//      }
-//        tableView.fillAndRefreshArrayOfDogs()
-//    }
+        
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 //        let view = UIView()
 //        let title = UILabel(frame: CGRect(x: 160.0, y: 40.0, width: 100, height: 30.0))
@@ -200,5 +207,5 @@ extension BreedsTableViewController: UITableViewDelegate {
 
 extension BreedsTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-}
+    }
 }

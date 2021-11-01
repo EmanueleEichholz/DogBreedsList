@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TU7-KA-6oM">
-                                <rect key="frame" x="149" y="626" width="117" height="36"/>
+                                <rect key="frame" x="148" y="626" width="118" height="36"/>
                                 <attributedString key="attributedText">
                                     <fragment content="LOADING...">
                                         <attributes>
@@ -29,12 +29,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="happydog" translatesAutoresizingMaskIntoConstraints="NO" id="qfJ-hD-1FV">
-                                <rect key="frame" x="83" y="225" width="249" height="311"/>
+                                <rect key="frame" x="82" y="225" width="250" height="311"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="qfJ-hD-1FV" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="2ne-Ip-Ypj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="TU7-KA-6oM" secondAttribute="bottom" constant="200" id="2sS-6t-IL3"/>
                             <constraint firstItem="qfJ-hD-1FV" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="83" id="5a7-nF-5OZ"/>
                             <constraint firstItem="qfJ-hD-1FV" firstAttribute="top" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="181" id="Qad-Nv-ytL"/>
@@ -42,6 +43,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="TU7-KA-6oM" secondAttribute="trailing" constant="148" id="U7v-u2-xRT"/>
                             <constraint firstItem="TU7-KA-6oM" firstAttribute="top" relation="lessThanOrEqual" secondItem="qfJ-hD-1FV" secondAttribute="bottom" constant="90" id="iFe-PO-fzR"/>
                             <constraint firstItem="TU7-KA-6oM" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="149" id="li8-2d-vh6"/>
+                            <constraint firstItem="TU7-KA-6oM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pTv-Ac-f9m"/>
                         </constraints>
                     </view>
                 </viewController>

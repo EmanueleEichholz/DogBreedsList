@@ -29,7 +29,7 @@ class HomeViewController: UIViewController {
         button.layer.cornerRadius = 25.0
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.mDarkBlue(), for: .normal)
-        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonFullList), for: .touchUpInside)
         
         return button
     }()
@@ -43,6 +43,7 @@ class HomeViewController: UIViewController {
         button.layer.cornerRadius = 25.0
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.mDarkBlue(), for: .normal)
+        button.addTarget(self, action: #selector(buttonFavoritesList), for: .touchUpInside)
         
         return button
     }()
@@ -69,6 +70,7 @@ class HomeViewController: UIViewController {
         constraintsFavoritesListButton()
         constraintsRandomBreedButton()
         view.backgroundColor = UIColor.mDarkBlue()
+//        self.navigationController?.isNavigationBarHidden = true
     }
     
     //MARK: Adding created elements to view
@@ -78,6 +80,19 @@ class HomeViewController: UIViewController {
         view.addSubview(favoritesListButton)
         view.addSubview(randomBreedButton)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    
+    
     
     // MARK: View Elements Constraints
     private func constraintsTitleLabel(){
@@ -113,10 +128,25 @@ class HomeViewController: UIViewController {
     //MARK: Giving Actions for buttons
     
     // Opening the main list with all breeds
-    @objc func buttonAction(sender: UIButton!) {
+    @objc func buttonFullList(sender: UIButton!) {
         let breeds = BreedsTableViewController()
         self.navigationController?.pushViewController(breeds, animated: true)
-        print("Botão foi clicado")
+        print("Botão da lista principal foi clicado")
+    }
+    
+    @objc func buttonFavoritesList(sender: UIButton!) {
+        let breeds = BreedsTableViewController()
+        breeds.favorites = true
+        self.navigationController?.pushViewController(breeds, animated: true)
+        print("Botão da lista de favoritos foi clicado")
+    }
+    
+    @objc func buttonRandomBreed(sender: UIButton!) {
+        let randomBreed = DetailViewController()
+        var touchedDog: Dog = Dog()
+        self.navigationController?.pushViewController(randomBreed, animated: true)
+        print("Botão para abrir uma raça aleatória foi clicado")
+        
     }
 }
 

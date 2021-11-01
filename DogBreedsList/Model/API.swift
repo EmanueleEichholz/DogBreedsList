@@ -50,7 +50,7 @@ struct API {
                 
                 switch statusCode {
                 case 200:
-                    //failure(APIError.notFound)
+//                    failure(APIError.notFound)
                     succes(decodeData)
                 case 404:
                     failure(APIError.notFound)

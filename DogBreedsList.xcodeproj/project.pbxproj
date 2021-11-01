@@ -32,6 +32,7 @@
 		40B4CDBE272CAC40001E4620 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 40B4CDBD272CAC40001E4620 /* SnapKit */; };
 		40B4CDC0272CACAE001E4620 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B4CDBF272CACAE001E4620 /* DetailViewController.swift */; };
 		40B4CDC4272CAD34001E4620 /* ImageDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B4CDC3272CAD34001E4620 /* ImageDetailViewCell.swift */; };
+		40F057E127301FE500B20D99 /* DataBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F057E027301FE500B20D99 /* DataBaseController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,8 @@
 		40B4CDB6272CAB40001E4620 /* BreedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BreedTableViewCell.xib; sourceTree = "<group>"; };
 		40B4CDBF272CACAE001E4620 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		40B4CDC3272CAD34001E4620 /* ImageDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewCell.swift; sourceTree = "<group>"; };
+		40F057E027301FE500B20D99 /* DataBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseController.swift; sourceTree = "<group>"; };
+		40F057E2273031A400B20D99 /* Notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Notes.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,7 @@
 		40B4CD4E272C6785001E4620 = {
 			isa = PBXGroup;
 			children = (
+				40F057E2273031A400B20D99 /* Notes.md */,
 				40B4CD59272C6785001E4620 /* DogBreedsList */,
 				40B4CD73272C6789001E4620 /* DogBreedsListTests */,
 				40B4CD7D272C6789001E4620 /* DogBreedsListUITests */,
@@ -204,6 +208,7 @@
 		40B4CD91272C701C001E4620 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				40F057E027301FE500B20D99 /* DataBaseController.swift */,
 				40B4CD92272C7128001E4620 /* HomeViewController.swift */,
 				40B4CD96272C8DA1001E4620 /* BreedsTableViewController.swift */,
 				40B4CDBF272CACAE001E4620 /* DetailViewController.swift */,
@@ -370,6 +375,7 @@
 				40B4CDAD272C90E4001E4620 /* MyUIColor.swift in Sources */,
 				40B4CDB7272CAB40001E4620 /* BreedTableViewCell.swift in Sources */,
 				40B4CDC4272CAD34001E4620 /* ImageDetailViewCell.swift in Sources */,
+				40F057E127301FE500B20D99 /* DataBaseController.swift in Sources */,
 				40B4CD9B272C8EDC001E4620 /* API.swift in Sources */,
 				40B4CDA1272C8F20001E4620 /* DogHeight.swift in Sources */,
 				40B4CDA3272C8F30001E4620 /* DogWeight.swift in Sources */,
