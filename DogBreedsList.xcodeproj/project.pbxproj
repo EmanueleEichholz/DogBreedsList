@@ -137,11 +137,11 @@
 		40B4CD59272C6785001E4620 /* DogBreedsList */ = {
 			isa = PBXGroup;
 			children = (
+				40B4CD5A272C6785001E4620 /* AppDelegate.swift */,
 				40B4CD8F272C6FF8001E4620 /* Model */,
 				40B4CD90272C7013001E4620 /* View */,
 				40B4CD91272C701C001E4620 /* Controller */,
 				40B4CD8E272C6FA9001E4620 /* Resources */,
-				40B4CD8D272C6F86001E4620 /* Application */,
 				40B4CD6B272C6788001E4620 /* Info.plist */,
 				40B4CD63272C6785001E4620 /* DogBreedsList.xcdatamodeld */,
 			);
@@ -163,15 +163,6 @@
 				40B4CD80272C6789001E4620 /* DogBreedsListUITestsLaunchTests.swift */,
 			);
 			path = DogBreedsListUITests;
-			sourceTree = "<group>";
-		};
-		40B4CD8D272C6F86001E4620 /* Application */ = {
-			isa = PBXGroup;
-			children = (
-				40B4CD5A272C6785001E4620 /* AppDelegate.swift */,
-				40B4CD68272C6788001E4620 /* LaunchScreen.storyboard */,
-			);
-			path = Application;
 			sourceTree = "<group>";
 		};
 		40B4CD8E272C6FA9001E4620 /* Resources */ = {
@@ -221,6 +212,7 @@
 		40B4CDB0272C9133001E4620 /* BreedTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				40B4CD68272C6788001E4620 /* LaunchScreen.storyboard */,
 				40B4CDB5272CAB40001E4620 /* BreedTableViewCell.swift */,
 				40B4CDB6272CAB40001E4620 /* BreedTableViewCell.xib */,
 				40B4CDC3272CAD34001E4620 /* ImageDetailViewCell.swift */,

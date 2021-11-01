@@ -3,7 +3,7 @@ Arrumar:
 - A barra de search nao esta funcionando
 - A barra de search só aparece quando arrasto a dela inicial
 - O layout nao dá certo no iPod Touch
-- readme nao aparece no projeto
+
 
 Falta implementar:
 
@@ -15,15 +15,15 @@ Falta implementar:
     * se mudar pra off, retirar dos favoritos e adicionar um alerta com o aviso que foi retirado
 
 
+
 Se der tempo:
 - implementar botao de cachorros randomicos
+
 
 Geral:
 - arrumar o código
 - fazer os slides
 - estudar o código
 
-
---- 4:50 da aula de coredata
 
 
