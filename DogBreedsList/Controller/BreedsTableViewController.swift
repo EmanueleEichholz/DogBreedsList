@@ -13,12 +13,14 @@ class BreedsTableViewController: UIViewController {
     let searchController = UISearchController(searchResultsController: nil)
     let context = DataBaseController.persistentContainer.viewContext
     var arrayOfDogs: [Dog] = []
+    //--let api = API()
+    var api: DogAPI?
     var filteredDogs: [Dog] = []
     var savedDogs: [Dog] = []
     var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
-    let api = API()
+    
     let reusdeIdentifier = "cell"
     var favorites : Bool = false
     
@@ -34,17 +36,28 @@ class BreedsTableViewController: UIViewController {
         table.register(nib, forCellReuseIdentifier: reusdeIdentifier)
         
         return table
+        
     }()
+    
+    //--esse  nao tinha
+    convenience init(api: DogAPI) {
+        self.init()
+        self.api = api
+    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureSearchBar()
         self.view.backgroundColor = UIColor.mLightBlue()
-        self.title = "Breeds List"
         self.view.addSubview(self.breedsTable)
         self.fillAndRefreshArrayOfDogs()
-        self.createRightBarButton()
+        configureSearchBar()
+        if favorites {
+            self.title = "Favorites Breeds"
+        } else {
+            self.title = "Breeds List"
+            self.createRightBarButton()
+        }
     }
     
     func configureSearchBar() {
@@ -65,8 +78,10 @@ class BreedsTableViewController: UIViewController {
     func fillAndRefreshArrayOfDogs() {
         
         if !favorites {
+            //tirar essa linha mais o mApi trocar por api
+            guard let mApi = self.api else { return }
             
-            api.getDogs(urlString: api.setDogsURL(), method: .GET, key: "5c904ece-d726-4d83-b209-b46426cfdace") { dogs in
+            mApi.getDogs(urlString: mApi.setDogsURL(), method: .GET, key: "5c904ece-d726-4d83-b209-b46426cfdace") { dogs in
                 DispatchQueue.main.async {
                     self.arrayOfDogs = dogs
                     print("Quantidade de cachorros: \(self.arrayOfDogs.count)")

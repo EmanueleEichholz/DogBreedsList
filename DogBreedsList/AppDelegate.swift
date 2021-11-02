@@ -12,6 +12,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+  
     let navController = UINavigationController(rootViewController: HomeViewController())
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -32,7 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = navController
+        let api = API()
+        self.window?.rootViewController = UINavigationController(rootViewController: HomeViewController(api: api))
         self.window?.makeKeyAndVisible()
 
         return true

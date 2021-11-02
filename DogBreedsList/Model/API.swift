@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct API {
+class API: DogAPI {
     
     //https://thedogapi.com/v1/images?api_key=ABC123
     //https://api.thedogapi.com/v1/breeds

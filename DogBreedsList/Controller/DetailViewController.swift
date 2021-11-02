@@ -45,7 +45,7 @@ extension DetailViewController: UITableViewDataSource {
 
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: reuseIdentifier)
         cell.selectionStyle = .none
-        cell.textLabel?.textColor = UIColor.mLightBlue()
+        cell.textLabel?.textColor = UIColor.mDarkBlue()
         cell.detailTextLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
         cell.detailTextLabel?.textColor = UIColor.mPink()
         cell.backgroundColor = .clear
