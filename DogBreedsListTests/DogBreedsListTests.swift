@@ -10,12 +10,6 @@ import XCTest
 
 
 class DogBreedsListTests: XCTestCase {
-    func testMeuPrimeiroTeste() {
-    let primeiroNumero = 3
-    let segundoNumero = 5
-    let soma = primeiroNumero + segundoNumero
-    XCTAssertEqual(8, soma)
-    }
     
     func test_init_willCallAPIOnce() {
         let doubleApi = APISpy()

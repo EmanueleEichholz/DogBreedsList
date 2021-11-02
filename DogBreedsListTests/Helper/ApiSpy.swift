@@ -18,6 +18,6 @@ class APISpy: DogAPI {
     
     func getDogs(urlString: String, method: HTTPMethod, key: String, succes: @escaping ([Dog]) -> Void, failure: @escaping (APIError) -> Void) {
         apiCalls += 1
-        return []
+        //return []
     }
 }

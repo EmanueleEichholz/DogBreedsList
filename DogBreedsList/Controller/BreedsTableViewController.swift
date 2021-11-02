@@ -10,17 +10,11 @@ import Kingfisher
 
 class BreedsTableViewController: UIViewController {
     
-    let searchController = UISearchController(searchResultsController: nil)
     let context = DataBaseController.persistentContainer.viewContext
     var arrayOfDogs: [Dog] = []
     //--let api = API()
     var api: DogAPI?
-    var filteredDogs: [Dog] = []
     var savedDogs: [Dog] = []
-    var isSearchBarEmpty: Bool {
-        return searchController.searchBar.text?.isEmpty ?? true
-    }
-    
     let reusdeIdentifier = "cell"
     var favorites : Bool = false
     
@@ -51,7 +45,6 @@ class BreedsTableViewController: UIViewController {
         self.view.backgroundColor = UIColor.mLightBlue()
         self.view.addSubview(self.breedsTable)
         self.fillAndRefreshArrayOfDogs()
-        configureSearchBar()
         if favorites {
             self.title = "Favorites Breeds"
         } else {
@@ -60,30 +53,28 @@ class BreedsTableViewController: UIViewController {
         }
     }
     
-    func configureSearchBar() {
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Buscar personagens"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.fillAndRefreshArrayOfDogs()
-        
+//        self.fillAndRefreshArrayOfDogs()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        self.fillAndRefreshArrayOfDogs()
     }
     
     
     func fillAndRefreshArrayOfDogs() {
+        print("entrei na funcao de popular")
         
-        if !favorites {
+//        if !favorites {
             //tirar essa linha mais o mApi trocar por api
             guard let mApi = self.api else { return }
             
             mApi.getDogs(urlString: mApi.setDogsURL(), method: .GET, key: "5c904ece-d726-4d83-b209-b46426cfdace") { dogs in
                 DispatchQueue.main.async {
                     self.arrayOfDogs = dogs
+                    print("entrei na chamada da api")
                     print("Quantidade de cachorros: \(self.arrayOfDogs.count)")
                     self.breedsTable.reloadData()
                 }
@@ -97,14 +88,12 @@ class BreedsTableViewController: UIViewController {
                     break;
                 }
             }
-        } else {
+//        else {
 //            do {
 //                self.savedDogs =  try DataBaseController.persistentContainer.viewContext.fetch(DataDog.fetchRequest())
 //            } catch {
 //                print("Falha ao trazer as informações do banco de dados.")
 //            }
-            
-        }
         self.breedsTable.reloadData()
     }
     
@@ -146,6 +135,7 @@ class BreedsTableViewController: UIViewController {
         }
 }
 
+
 extension BreedsTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.arrayOfDogs.count
@@ -179,39 +169,11 @@ extension BreedsTableViewController: UITableViewDataSource {
         return cell!
     }
     
-    
-//    func filterContentForSearchText(_ searchText: String,
-//                                    dogsName: [Dog]? = nil) {
-//        filteredDogs = arrayOfDogs.filter { (arrayOfDogs: Dog ) -> Bool in
-//            return (arrayOfDogs.name?.lowercased().contains(searchText.lowercased()))
-//        }
-//        tableView.reloadData()
-//    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 146.0
     }
 }
-        
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let view = UIView()
-//        let title = UILabel(frame: CGRect(x: 160.0, y: 40.0, width: 100, height: 30.0))
-//        title.text = "List of dogs"
-//        title.textColor = UIColor.mWhite()
-//        view.addSubview(title)
-//        view.backgroundColor = UIColor.mPink()
-//        return view
-//    }
-//
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return "List of Dogs"
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 100
-//    }
-
-
+    
 extension BreedsTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detail = DetailViewController()
