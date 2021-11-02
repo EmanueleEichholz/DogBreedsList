@@ -19,6 +19,8 @@ class HomeViewController: UIViewController {
         
         return label
     }()
+
+    var api: API?
     
     //MARK: Creating Button to enter the list of all breeds
     private lazy var fullListButton: UIButton = {
@@ -61,6 +63,11 @@ class HomeViewController: UIViewController {
         return button
     }()
 
+    convenience init(api: API) {
+        self.init()
+        self.api = api
+    }
+
     //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +75,6 @@ class HomeViewController: UIViewController {
         constraintsTitleLabel()
         constraintsFullListButton()
         constraintsFavoritesListButton()
-        constraintsRandomBreedButton()
         view.backgroundColor = UIColor.mDarkBlue()
 //        self.navigationController?.isNavigationBarHidden = true
     }
@@ -78,7 +84,6 @@ class HomeViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(fullListButton)
         view.addSubview(favoritesListButton)
-        view.addSubview(randomBreedButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,8 +95,6 @@ class HomeViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
-    
     
     
     // MARK: View Elements Constraints
@@ -110,18 +113,9 @@ class HomeViewController: UIViewController {
     
     private func constraintsFavoritesListButton() {
         favoritesListButton.centerXAnchor.constraint(equalTo: fullListButton.centerXAnchor).isActive = true
-        //favoritesListButton.topAnchor.constraint(equalTo: fullListButton.bottomAnchor, constant: 50).isActive = true
-        favoritesListButton.bottomAnchor.constraint(equalTo: randomBreedButton.topAnchor, constant: -50.0).isActive = true
+        favoritesListButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100.0).isActive = true
         favoritesListButton.widthAnchor.constraint(equalToConstant: 250.0).isActive = true
         favoritesListButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
-    }
-    
-    private func constraintsRandomBreedButton() {
-        randomBreedButton.centerXAnchor.constraint(equalTo: favoritesListButton.centerXAnchor).isActive = true
-        //randomBreedButton.topAnchor.constraint(equalTo: favoritesListButton.bottomAnchor, constant: 50).isActive = true
-        randomBreedButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -120.0).isActive = true
-        randomBreedButton.widthAnchor.constraint(equalToConstant: 250.0).isActive = true
-        randomBreedButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
     }
     
     
@@ -129,8 +123,13 @@ class HomeViewController: UIViewController {
     
     // Opening the main list with all breeds
     @objc func buttonFullList(sender: UIButton!) {
-        let breeds = BreedsTableViewController()
-        self.navigationController?.pushViewController(breeds, animated: true)
+        if let mApi = api {
+            let breeds = BreedsTableViewController(api: mApi)
+            self.navigationController?.pushViewController(breeds, animated: true)
+        } else {
+            let breeds = BreedsTableViewController()
+            self.navigationController?.pushViewController(breeds, animated: true)
+        }
         print("Botão da lista principal foi clicado")
     }
     
@@ -141,12 +140,5 @@ class HomeViewController: UIViewController {
         print("Botão da lista de favoritos foi clicado")
     }
     
-    @objc func buttonRandomBreed(sender: UIButton!) {
-        let randomBreed = DetailViewController()
-        var touchedDog: Dog = Dog()
-        self.navigationController?.pushViewController(randomBreed, animated: true)
-        print("Botão para abrir uma raça aleatória foi clicado")
-        
-    }
 }
 
