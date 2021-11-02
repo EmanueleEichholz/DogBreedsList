@@ -7,10 +7,10 @@ O objetivo do aplicativo é ser uma lista de consulta de diversas raças de cach
 # Informações técnicas
 
 
-- API "The Dog API". 
+- API utilizada: "The Dog API" - documentação disponívem em: https://docs.thedogapi.com/
 - Foi utilizado uma interface builder (xib) para construir a célula personalizada da lista principal e o restante foi feito via código (view code).
 - Para realizar a persistência dos dados foi utilizado o CoreData.
-- Foi utilizado o framework XCTest para realizar um teste de integração que verifica o funcionamento da API no aplicativo
+- Foi utilizado o framework XCTest para realizar um teste de integração que verifica o funcionamento da API no aplicativo.
 
 
 - Versão do xCode utilizada: 13.1
