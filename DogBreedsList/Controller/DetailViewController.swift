@@ -12,17 +12,20 @@ import CoreData
 
 class DetailViewController: UIViewController {
     
+    //MARK: Declaração de variáveis
     var touchedDog: Dog = Dog()
     let reuseIdentifier = "cell"
     let context = DataBaseController.persistentContainer.viewContext
     var localRepository : CoreDataRepository?
     
+    //MARK: Injeção de dependência dentro da classe
     convenience init(localRepository: CoreDataRepository) {
         self.init()
         self.localRepository = localRepository
     }
     
-    lazy var uitv_Tabela: UITableView = {
+    //MARK: Criando a tabela de detalhes
+    lazy var detailTable: UITableView = {
         var table = UITableView()
         table.frame = self.view.bounds
         table.dataSource = self
@@ -33,15 +36,16 @@ class DetailViewController: UIViewController {
         return table
     }()
     
+    //MARK: View Did Load
     override func viewDidLoad() {
         super .viewDidLoad()
-        self.view.addSubview(self.uitv_Tabela)
+        self.view.addSubview(self.detailTable)
         self.title = touchedDog.name
         self.view.backgroundColor = UIColor.mWhite()
     }
 }
 
-
+//MARK: MÉTODOS DE DATA SOURCE
 extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 9

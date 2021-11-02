@@ -9,6 +9,12 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    var api: API?
+    convenience init(api: API) {
+        self.init()
+        self.api = api
+    }
+    
     //MARK: Creating Title
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -20,7 +26,6 @@ class HomeViewController: UIViewController {
         return label
     }()
 
-    var api: API?
     
     //MARK: Creating Button to enter the list of all breeds
     private lazy var fullListButton: UIButton = {
@@ -63,11 +68,6 @@ class HomeViewController: UIViewController {
         return button
     }()
 
-    convenience init(api: API) {
-        self.init()
-        self.api = api
-    }
-
     //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +76,18 @@ class HomeViewController: UIViewController {
         constraintsFullListButton()
         constraintsFavoritesListButton()
         view.backgroundColor = UIColor.mDarkBlue()
-//        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    //MARK: View Will Appear
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    //MARK: View Will Disappear
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     //MARK: Adding created elements to view
@@ -86,24 +97,17 @@ class HomeViewController: UIViewController {
         view.addSubview(favoritesListButton)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
     
     // MARK: View Elements Constraints
+    
+    //Title Constraints
     private func constraintsTitleLabel(){
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         titleLabel.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant: 120).isActive = true
         titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: fullListButton.topAnchor, constant: 120).isActive = true
     }
     
+    //Button Breeds Full List Constraints
     private func constraintsFullListButton() {
         fullListButton.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor).isActive = true
         fullListButton.bottomAnchor.constraint(equalTo: favoritesListButton.topAnchor, constant: -50.0).isActive = true
@@ -111,6 +115,7 @@ class HomeViewController: UIViewController {
         fullListButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
     }
     
+    //Button Favorites Breeds Constraints
     private func constraintsFavoritesListButton() {
         favoritesListButton.centerXAnchor.constraint(equalTo: fullListButton.centerXAnchor).isActive = true
         favoritesListButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100.0).isActive = true
@@ -133,12 +138,12 @@ class HomeViewController: UIViewController {
         print("Botão da lista principal foi clicado")
     }
     
+    //Opening favorites list
     @objc func buttonFavoritesList(sender: UIButton!) {
         let breeds = BreedsTableViewController()
         breeds.favorites = true
         self.navigationController?.pushViewController(breeds, animated: true)
         print("Botão da lista de favoritos foi clicado")
     }
-    
 }
 
