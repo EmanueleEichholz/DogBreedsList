@@ -10,21 +10,31 @@ import UIKit
 class HomeViewController: UIViewController {
     
     var api: API?
+    
     convenience init(api: API) {
         self.init()
         self.api = api
     }
     
     //MARK: Creating Title
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "DOG LIST"
-        label.font = UIFont(name: "DIN Condensed", size: 64)
-        label.textColor = UIColor.white
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
+//    private lazy var titleLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = "DOG LIST"
+//        label.font = UIFont(name: "DIN Condensed", size: 64)
+//        label.textColor = UIColor.white
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//
+//        return label
+//    }()
+    
+    private lazy var titleLabel: UIImageView = {
+        let imageDog = "2.png"
+        let image = UIImage(named: imageDog)
+        let imageView = UIImageView(image: image!)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
+
 
     
     //MARK: Creating Button to enter the list of all breeds
@@ -52,19 +62,6 @@ class HomeViewController: UIViewController {
         button.setTitleColor(.mDarkBlue(), for: .normal)
         button.addTarget(self, action: #selector(buttonFavoritesList), for: .touchUpInside)
         
-        return button
-    }()
-    
-    //MARK: Creating Button to randomize and open a specific breed
-    private lazy var randomBreedButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("See a Random Breed", for: .normal)
-        button.backgroundColor = UIColor.mWhite()
-        button.titleLabel?.font =  UIFont(name: "DIN Condensed", size: 30)
-        button.layer.cornerRadius = 25.0
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(.mDarkBlue(), for: .normal)
-
         return button
     }()
 
@@ -103,14 +100,16 @@ class HomeViewController: UIViewController {
     //Title Constraints
     private func constraintsTitleLabel(){
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        titleLabel.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant: 120).isActive = true
-        titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: fullListButton.topAnchor, constant: 120).isActive = true
+        titleLabel.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant: 200).isActive = true
+        titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: fullListButton.topAnchor, constant: -20).isActive = true
+        titleLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
+        titleLabel.heightAnchor.constraint(equalToConstant: 300.0).isActive = true
     }
     
     //Button Breeds Full List Constraints
     private func constraintsFullListButton() {
         fullListButton.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor).isActive = true
-        fullListButton.bottomAnchor.constraint(equalTo: favoritesListButton.topAnchor, constant: -50.0).isActive = true
+        fullListButton.bottomAnchor.constraint(equalTo: favoritesListButton.topAnchor, constant: -60.0).isActive = true
         fullListButton.widthAnchor.constraint(equalToConstant: 250.0).isActive = true
         fullListButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
     }
@@ -118,7 +117,7 @@ class HomeViewController: UIViewController {
     //Button Favorites Breeds Constraints
     private func constraintsFavoritesListButton() {
         favoritesListButton.centerXAnchor.constraint(equalTo: fullListButton.centerXAnchor).isActive = true
-        favoritesListButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100.0).isActive = true
+        favoritesListButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80.0).isActive = true
         favoritesListButton.widthAnchor.constraint(equalToConstant: 250.0).isActive = true
         favoritesListButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
     }
@@ -135,15 +134,12 @@ class HomeViewController: UIViewController {
             let breeds = BreedsTableViewController()
             self.navigationController?.pushViewController(breeds, animated: true)
         }
-        print("Botão da lista principal foi clicado")
     }
     
     //Opening favorites list
     @objc func buttonFavoritesList(sender: UIButton!) {
-        let breeds = BreedsTableViewController()
-        breeds.favorites = true
-        self.navigationController?.pushViewController(breeds, animated: true)
-        print("Botão da lista de favoritos foi clicado")
+        let favs = FavoriteViewController()
+        self.navigationController?.pushViewController(favs, animated: true)
     }
 }
 

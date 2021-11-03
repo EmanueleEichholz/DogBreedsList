@@ -11,12 +11,9 @@ import Kingfisher
 class BreedsTableViewController: UIViewController {
     
     //MARK: Declaração de variáveis
-    let context = DataBaseController.persistentContainer.viewContext
     var arrayOfDogs: [Dog] = []
     var api: DogAPI?
-    var savedDogs: [Dog] = []
     let reusdeIdentifier = "cell"
-    var favorites : Bool = false
     let apiKey = "5c904ece-d726-4d83-b209-b46426cfdace"
     
     //MARK: Injeção de dependência dentro da classe
@@ -43,15 +40,11 @@ class BreedsTableViewController: UIViewController {
     //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(self.breedsTable)
+        self.view.addSubview(breedsTable)
         self.fillAndRefreshArrayOfDogs()
         self.view.backgroundColor = UIColor.mWhite()
-        if favorites {
-            self.title = "Favorites Breeds"
-        } else {
-            self.title = "Breeds List"
-            self.createRightBarButton()
-        }
+        self.title = "Breeds List"
+        self.createRightBarButton()
     }
     
     //MARK: Busca os itens na API, popula o arrayOfDogs e atualiza a tabela
@@ -91,8 +84,7 @@ class BreedsTableViewController: UIViewController {
 
     //MARK: Atribui a função do botão de coração
     @objc func getFavorites(){
-        let list = BreedsTableViewController()
-        list.favorites = true
+        let list = FavoriteViewController()
         self.show(list, sender: nil)
     }
     
@@ -105,8 +97,7 @@ class BreedsTableViewController: UIViewController {
             let buttonTryAgain = UIAlertAction(title: "Try Again", style: .default) { _ in self.fillAndRefreshArrayOfDogs() }
                 
             let buttonOpenFavorites = UIAlertAction(title: "Open Favorites Breeds", style: .default) { _ in
-                let list = BreedsTableViewController()
-                list.favorites = true
+                let list = FavoriteViewController()
                 self.navigationController?.pushViewController(list, animated: true) }
             
             let buttonCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -170,8 +161,9 @@ extension BreedsTableViewController: UITableViewDelegate {
     
     //Abre a tela de detalhes do cachorro selecionado
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let localRepository = LocalRepository()
-        let detail = DetailViewController(localRepository: localRepository)
+ //       let localRepository = LocalRepository()
+//        let detail = DetailViewController(localRepository: localRepository)
+        let detail = DetailViewController()
         detail.touchedDog = self.arrayOfDogs[indexPath.row]
         self.navigationController?.pushViewController(detail, animated: true)
     }
