@@ -36,8 +36,6 @@
 		40F057E62730A33100B20D99 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F057E52730A33100B20D99 /* IntegrationTests.swift */; };
 		40F057E92730B7ED00B20D99 /* ApiSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F057E82730B7ED00B20D99 /* ApiSpy.swift */; };
 		40F057EB27317FCE00B20D99 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F057EA27317FCE00B20D99 /* FavoritesViewController.swift */; };
-		40F057ED273184E700B20D99 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F057EC273184E700B20D99 /* CoreDataRepository.swift */; };
-		40F057EF2731854E00B20D99 /* LocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F057EE2731854E00B20D99 /* LocalRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,8 +89,6 @@
 		40F057E52730A33100B20D99 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
 		40F057E82730B7ED00B20D99 /* ApiSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiSpy.swift; sourceTree = "<group>"; };
 		40F057EA27317FCE00B20D99 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		40F057EC273184E700B20D99 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
-		40F057EE2731854E00B20D99 /* LocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,8 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				40B4CD5A272C6785001E4620 /* AppDelegate.swift */,
-				40F057EC273184E700B20D99 /* CoreDataRepository.swift */,
-				40F057EE2731854E00B20D99 /* LocalRepository.swift */,
 				40B4CD8F272C6FF8001E4620 /* Model */,
 				40B4CD90272C7013001E4620 /* View */,
 				40B4CD91272C701C001E4620 /* Controller */,
@@ -392,13 +386,11 @@
 				40B4CDAD272C90E4001E4620 /* MyUIColor.swift in Sources */,
 				40B4CDB7272CAB40001E4620 /* BreedTableViewCell.swift in Sources */,
 				40B4CDC4272CAD34001E4620 /* ImageDetailViewCell.swift in Sources */,
-				40F057ED273184E700B20D99 /* CoreDataRepository.swift in Sources */,
 				40F057EB27317FCE00B20D99 /* FavoritesViewController.swift in Sources */,
 				40F057E127301FE500B20D99 /* DataBaseController.swift in Sources */,
 				40B4CD9B272C8EDC001E4620 /* API.swift in Sources */,
 				40B4CDA1272C8F20001E4620 /* DogHeight.swift in Sources */,
 				40B4CDA3272C8F30001E4620 /* DogWeight.swift in Sources */,
-				40F057EF2731854E00B20D99 /* LocalRepository.swift in Sources */,
 				40B4CD93272C7128001E4620 /* HomeViewController.swift in Sources */,
 				40B4CD9F272C8F13001E4620 /* Dog.swift in Sources */,
 				40B4CDAB272C8F99001E4620 /* EndPoints.swift in Sources */,

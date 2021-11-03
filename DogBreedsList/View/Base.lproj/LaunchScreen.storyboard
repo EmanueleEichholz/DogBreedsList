@@ -15,35 +15,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TU7-KA-6oM">
-                                <rect key="frame" x="148" y="626" width="118" height="36"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="LOADING...">
-                                        <attributes>
-                                            <font key="NSFont" size="36" name="DINCondensed-Bold"/>
-                                            <font key="NSOriginalFont" size="36" name="DINCondensed-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="happydog" translatesAutoresizingMaskIntoConstraints="NO" id="qfJ-hD-1FV">
-                                <rect key="frame" x="82" y="225" width="250" height="311"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="ROk-cS-v2C">
+                                <rect key="frame" x="52" y="298" width="310" height="310"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="310" id="R7L-Yw-cvi"/>
+                                    <constraint firstAttribute="height" constant="310" id="a4b-yn-OXt"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.27019539479999999" green="0.3984404802" blue="0.97735911610000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="qfJ-hD-1FV" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="2ne-Ip-Ypj"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="TU7-KA-6oM" secondAttribute="bottom" constant="200" id="2sS-6t-IL3"/>
-                            <constraint firstItem="qfJ-hD-1FV" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="83" id="5a7-nF-5OZ"/>
-                            <constraint firstItem="qfJ-hD-1FV" firstAttribute="top" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="181" id="Qad-Nv-ytL"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="qfJ-hD-1FV" secondAttribute="trailing" constant="82" id="SP2-0x-n5s"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="TU7-KA-6oM" secondAttribute="trailing" constant="148" id="U7v-u2-xRT"/>
-                            <constraint firstItem="TU7-KA-6oM" firstAttribute="top" relation="lessThanOrEqual" secondItem="qfJ-hD-1FV" secondAttribute="bottom" constant="90" id="iFe-PO-fzR"/>
-                            <constraint firstItem="TU7-KA-6oM" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="149" id="li8-2d-vh6"/>
-                            <constraint firstItem="TU7-KA-6oM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pTv-Ac-f9m"/>
+                            <constraint firstItem="ROk-cS-v2C" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="A7U-nm-3V0"/>
+                            <constraint firstItem="ROk-cS-v2C" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="za2-K2-QWb"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -53,6 +37,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="happydog" width="249" height="202"/>
+        <image name="1" width="1080" height="1080"/>
     </resources>
 </document>
