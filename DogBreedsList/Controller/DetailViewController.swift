@@ -119,18 +119,11 @@ extension DetailViewController: UITableViewDataSource {
             let cellImage = ImageDetailViewCell()
             if let urlString = touchedDog.image?.url {
                 guard let url = URL(string: urlString) else { return cellImage }
-                print(url)
                 cellImage.setImage(url: url)
-                //print(urlString)
             } else {
                 cellImage.imageBreed.image = UIImage(named: "dogplaceholder")
             }
             return cellImage
-//            guard let urlString = touchedDog.image?.url else { return UITableViewCell() }
-//            guard let url = URL(string: urlString) else { return UITableViewCell() }
-//            cellImage.setImage(url: url)
-//            self.view.backgroundColor = .mWhite()
-//            return cellImage
         default:
             return UITableViewCell()
         }
@@ -240,7 +233,6 @@ extension DetailViewController: UITableViewDelegate {
             dog.weight = weight
             dog.temperament = temperament
             dog.image = image
-//            print("salvando nos favss: \(dog.image)")
             DataBaseController.saveContext()
             favorite = true
             self.detailTable.reloadData()
