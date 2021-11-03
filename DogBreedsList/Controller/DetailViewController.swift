@@ -36,9 +36,10 @@ class DetailViewController: UIViewController {
         self.title = touchedDog.name
         self.view.backgroundColor = UIColor.mWhite()
         fetchFavorites()
-        self.createRightBarButton()
+        if !favorite {
+            self.createRightBarButton()
+        }
     }
-    
     //MARK: Cria o botão de coração no canto superior direito
     func createRightBarButton() {
         let heartImage = UIImage(systemName: "heart.fill")
@@ -116,9 +117,9 @@ extension DetailViewController: UITableViewDataSource {
             return self.showFavoritesButton()
         case 8:
             let cellImage = ImageDetailViewCell()
-            
             if let urlString = touchedDog.image?.url {
-                guard let url = URL(string: urlString) else { return UITableViewCell() }
+                guard let url = URL(string: urlString) else { return cellImage }
+                print(url)
                 cellImage.setImage(url: url)
                 //print(urlString)
             } else {
@@ -197,7 +198,7 @@ extension DetailViewController: UITableViewDelegate {
         }
     }
     
-    //Busca os cachorros
+    ///Busca os cachorros
     func fetchFavorites() {
             let context = DataBaseController.persistentContainer.viewContext
             do {
@@ -216,7 +217,7 @@ extension DetailViewController: UITableViewDelegate {
             }
         }
     
-    //Adiciona o cachorro selecionado no CoreData
+    ///Adiciona o cachorro selecionado no CoreData
     func addToFavorites() {
         if let name = touchedDog.name,
             let breed_group = touchedDog.breed_group,
@@ -247,7 +248,7 @@ extension DetailViewController: UITableViewDelegate {
                 
         }
         
-    //Remove o cachorro selecionado do CoreData
+    ///Remove o cachorro selecionado do CoreData
         func removeFromFavorites() {
             guard let name = touchedDog.name else { return }
             let fetchRequest = DataDog.fetchRequest()

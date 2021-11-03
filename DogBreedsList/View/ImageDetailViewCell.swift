@@ -36,6 +36,7 @@ class ImageDetailViewCell: UITableViewCell {
                 completionHandler: { result in
                     
                 })
+        
         //Arruma as constraints
         self.imageBreed.snp.makeConstraints { make in
             make.top.equalTo(self).offset(10)

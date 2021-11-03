@@ -122,17 +122,15 @@ extension FavoriteViewController: UITableViewDelegate {
         
         let favDataDog = favoriteDog[indexPath.row]
         
-        var savedTouchedDog : Dog = Dog()
-        savedTouchedDog.name = favDataDog.name
-        savedTouchedDog.breed_group = favDataDog.breed_group
-        savedTouchedDog.bred_for = favDataDog.bred_for
-        savedTouchedDog.life_span = favDataDog.life_span
-        savedTouchedDog.height?.metric = favDataDog.height
-        savedTouchedDog.weight?.metric = favDataDog.weight
-        savedTouchedDog.temperament = favDataDog.temperament
         guard let image = favDataDog.image else { return }
-        savedTouchedDog.image?.url = image
-        print(favDataDog.image)
+            let savedTouchedDog : Dog = Dog(name: favDataDog.name,
+                            bred_for: favDataDog.breed_group,
+                            breed_group: favDataDog.bred_for,
+                            height: DogHeight(metric: favDataDog.height),
+                            weight: DogWeight(metric: favDataDog.weight),
+                            life_span: favDataDog.life_span,
+                            temperament: favDataDog.temperament,
+                            image: DogImage(url: image))
         
         //O cachorro tocado da lista de favoritos é atribuito a mesma variável usada para abrir os cachorros da tabela principal, assim é possível utilizar a mesma DetailView controller para os dois casos
        
