@@ -12,12 +12,13 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-  
+    
+    //Inicializa a Navigation Controller
     let navController = UINavigationController(rootViewController: HomeViewController())
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.\
         
+        //Configura a aparência da Navigation Bar
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
@@ -31,15 +32,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         }
         
-        
-        self.window = UIWindow(frame: UIScreen.main.bounds)
         let api = API()
+        self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = UINavigationController(rootViewController: HomeViewController(api: api))
         self.window?.makeKeyAndVisible()
 
         return true
     }
     
+    //Salva os dados antes de fechar
     func applicationWillTerminate(_ application: UIApplication) {
         DataBaseController.saveContext()
     }

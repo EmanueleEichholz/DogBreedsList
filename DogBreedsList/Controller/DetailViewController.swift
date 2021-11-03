@@ -36,16 +36,33 @@ class DetailViewController: UIViewController {
         self.title = touchedDog.name
         self.view.backgroundColor = UIColor.mWhite()
         fetchFavorites()
-        
+        self.createRightBarButton()
+    }
+    
+    //MARK: Cria o botão de coração no canto superior direito
+    func createRightBarButton() {
+        let heartImage = UIImage(systemName: "heart.fill")
+        let rightButton = UIBarButtonItem(image: heartImage, style: UIBarButtonItem.Style.plain, target: self, action: #selector(getFavorites))
+        rightButton.tintColor = UIColor.mDarkBlue()
+        self.navigationItem.rightBarButtonItem = rightButton
+    }
+
+    //MARK: Atribui a função do botão de coração
+    @objc func getFavorites(){
+        let list = FavoriteViewController()
+        self.show(list, sender: nil)
     }
 }
 
 //MARK: MÉTODOS DE DATA SOURCE
 extension DetailViewController: UITableViewDataSource {
+    
+    //Define o número de linhas da tabela de detalhes
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 9
     }
-
+    
+    //Formata as células que compõem a tabela
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: reuseIdentifier)
@@ -62,6 +79,8 @@ extension DetailViewController: UITableViewDataSource {
                 cell.detailTextLabel?.text = "Unknow"
             }
         
+        
+        //Define o conteúdo para cada célula
         switch indexPath.row {
         case 0:
             cell.textLabel?.text = "Breed Name: "
@@ -94,29 +113,40 @@ extension DetailViewController: UITableViewDataSource {
             cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 16.0)
             cell.detailTextLabel?.numberOfLines = 0
         case 7:
-            return self.showFavoriteButton()
+            return self.showFavoritesButton()
         case 8:
             let cellImage = ImageDetailViewCell()
-            guard let urlString = touchedDog.image?.url else { return UITableViewCell() }
-            guard let url = URL(string: urlString) else { return UITableViewCell() }
-            cellImage.setImage(url: url)
-            self.view.backgroundColor = .mWhite()
+            
+            if let urlString = touchedDog.image?.url {
+                guard let url = URL(string: urlString) else { return UITableViewCell() }
+                cellImage.setImage(url: url)
+                //print(urlString)
+            } else {
+                cellImage.imageBreed.image = UIImage(named: "dogplaceholder")
+            }
             return cellImage
+//            guard let urlString = touchedDog.image?.url else { return UITableViewCell() }
+//            guard let url = URL(string: urlString) else { return UITableViewCell() }
+//            cellImage.setImage(url: url)
+//            self.view.backgroundColor = .mWhite()
+//            return cellImage
         default:
             return UITableViewCell()
         }
         return cell
     }
 
-    func showFavoriteButton() -> UITableViewCell {
+    //Define as funções que o botão da célula terá
+    func showFavoritesButton() -> UITableViewCell {
             if favorite {
-                return self.setCellRemoveFavorites()
+                return self.cellRemoveFromFavorites()
             } else {
-                return self.setCellAddFavorites()
+                return self.cellAddToFavorites()
             }
     }
-
-    func setCellAddFavorites() -> UITableViewCell {
+    
+    //Configura a aparência do botão quando o cachorro ainda não estiver adicionado a lista de favoritos
+    func cellAddToFavorites() -> UITableViewCell {
        let cell = BreedTableViewCell()
         cell.textLabel?.textColor = UIColor.mPink()
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
@@ -127,7 +157,8 @@ extension DetailViewController: UITableViewDataSource {
         return cell
     }
 
-    func setCellRemoveFavorites() -> UITableViewCell {
+    //Configura a aparência do botão quando o cachorro já está na lista de favoritos
+    func cellRemoveFromFavorites() -> UITableViewCell {
         let cell = BreedTableViewCell()
         cell.textLabel?.textColor = UIColor.mLightBlue()
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
@@ -135,23 +166,29 @@ extension DetailViewController: UITableViewDataSource {
         cell.imageView?.image = UIImage(systemName: "trash.fill")
         cell.imageView?.tintColor = UIColor.mLightBlue()
         cell.textLabel?.text = "Remove this dog from favorites"
-         
-         return cell
+        return cell
         }
 }
 
+
+//MARK: Métodos de Delegate
 extension DetailViewController: UITableViewDelegate {
     
+    //Define os métodos que serão chamados quando células específicas forem tocadas
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        //Adiciona ou remove dos favoritos
         if indexPath.row == 7 {
             if favorite {
-                removeFavorite()
+                removeFromFavorites()
+                favorite = false
             } else {
-                addFavorites()
+                addToFavorites()
+                favorite = true
             }
         }
         
+        //Abre a Imagem no Safari
         if indexPath.row == 8 {
             guard let imageString = touchedDog.image?.url else { return }
             guard let url = URL(string: imageString) else { return }
@@ -160,6 +197,7 @@ extension DetailViewController: UITableViewDelegate {
         }
     }
     
+    //Busca os cachorros
     func fetchFavorites() {
             let context = DataBaseController.persistentContainer.viewContext
             do {
@@ -177,8 +215,9 @@ extension DetailViewController: UITableViewDelegate {
                 print("Couldn't get the dogs :(")
             }
         }
-        
-    func addFavorites() {
+    
+    //Adiciona o cachorro selecionado no CoreData
+    func addToFavorites() {
         if let name = touchedDog.name,
             let breed_group = touchedDog.breed_group,
             let bred_for = touchedDog.bred_for,
@@ -200,18 +239,16 @@ extension DetailViewController: UITableViewDelegate {
             dog.weight = weight
             dog.temperament = temperament
             dog.image = image
-                
+//            print("salvando nos favss: \(dog.image)")
             DataBaseController.saveContext()
-            
             favorite = true
-            
             self.detailTable.reloadData()
-            
             }
                 
         }
         
-        func removeFavorite() {
+    //Remove o cachorro selecionado do CoreData
+        func removeFromFavorites() {
             guard let name = touchedDog.name else { return }
             let fetchRequest = DataDog.fetchRequest()
             let predicate = NSPredicate(format: "name == %@", name)

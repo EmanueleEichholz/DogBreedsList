@@ -16,17 +16,7 @@ class HomeViewController: UIViewController {
         self.api = api
     }
     
-    //MARK: Creating Title
-//    private lazy var titleLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = "DOG LIST"
-//        label.font = UIFont(name: "DIN Condensed", size: 64)
-//        label.textColor = UIColor.white
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//
-//        return label
-//    }()
-    
+    //MARK: Setting image to homescreen
     private lazy var titleLabel: UIImageView = {
         let imageDog = "2.png"
         let image = UIImage(named: imageDog)

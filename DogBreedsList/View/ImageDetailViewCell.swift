@@ -23,7 +23,8 @@ class ImageDetailViewCell: UITableViewCell {
     }
     
     func setImage (url: URL) {
-
+        
+        //Aparência da imagem
         self.imageBreed.layer.cornerRadius = 10.0
         self.imageBreed.layer.masksToBounds = true
         self.imageBreed.contentMode = .scaleAspectFit
@@ -35,7 +36,7 @@ class ImageDetailViewCell: UITableViewCell {
                 completionHandler: { result in
                     
                 })
-        
+        //Arruma as constraints
         self.imageBreed.snp.makeConstraints { make in
             make.top.equalTo(self).offset(10)
             make.bottom.equalTo(self).offset(-10)

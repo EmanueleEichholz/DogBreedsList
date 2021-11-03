@@ -15,10 +15,12 @@ class API: DogAPI {
     
     let baseURL = "https://api.thedogapi.com/v1"
     
+    //Junta a URL base com os EndPoints
     func setDogsURL() -> String {
         return "\(self.baseURL)/\(EndPoints.breeds)"
     }
     
+    //MARK: Utiliza a API para popular o array de dogs
     /// Returns an array of Dogs -> If nil = []
     func getDogs(urlString: String, method: HTTPMethod, key: String, succes: @escaping ([Dog]) -> Void, failure: @escaping (APIError) -> Void) {
 
@@ -43,7 +45,6 @@ class API: DogAPI {
             }
             
             do {
-
                 let decoder : JSONDecoder = JSONDecoder()
                 let decodeData: [Dog] = try
                 decoder.decode([Dog].self, from: data)

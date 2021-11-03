@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+//Define como irei decodificar os dados que irei buscar na API
 struct Dog: Codable {
     
     var name            : String?

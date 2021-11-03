@@ -7,6 +7,7 @@
 
 import Foundation
 
+//Enum que define algumas opções de erros que podem resultar da chamada da API
 enum APIError: Error {
      case emptyResponse
      case notFound

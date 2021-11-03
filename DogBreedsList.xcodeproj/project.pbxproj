@@ -221,8 +221,8 @@
 		40B4CDB0272C9133001E4620 /* BreedTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				40B4CDB5272CAB40001E4620 /* BreedTableViewCell.swift */,
 				40B4CDB6272CAB40001E4620 /* BreedTableViewCell.xib */,
+				40B4CDB5272CAB40001E4620 /* BreedTableViewCell.swift */,
 			);
 			path = BreedTableViewCell;
 			sourceTree = "<group>";

@@ -92,16 +92,18 @@ class BreedsTableViewController: UIViewController {
     func showAlertToUser(mensagem: String) {
         
         DispatchQueue.main.async {
+            //Mensagem
             let alert = UIAlertController(title: "Attention!", message: mensagem, preferredStyle: .actionSheet)
-            
+            //Tenta atualizar a página
             let buttonTryAgain = UIAlertAction(title: "Try Again", style: .default) { _ in self.fillAndRefreshArrayOfDogs() }
-                
+            //Abre os cachorros favoritados
             let buttonOpenFavorites = UIAlertAction(title: "Open Favorites Breeds", style: .default) { _ in
                 let list = FavoriteViewController()
                 self.navigationController?.pushViewController(list, animated: true) }
-            
+            //Cancela o alerta e fica na página da tabela principal
             let buttonCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                
+            
+            //Adiona os botãos ao alerta
             alert.addAction(buttonTryAgain)
             alert.addAction(buttonOpenFavorites)
             alert.addAction(buttonCancel)
@@ -141,7 +143,7 @@ extension BreedsTableViewController: UITableViewDataSource {
         cell?.labelDescription.numberOfLines = 3
         cell?.backgroundColor = UIColor.mWhite()
         
-        //Configura a imagem
+        //Configura a imagem com os recursos do kingfisher
         if let image = self.arrayOfDogs[indexPath.row].image?.url {
             let url = URL(string: image)
             cell?.imageBreed.kf.setImage(
@@ -155,14 +157,11 @@ extension BreedsTableViewController: UITableViewDataSource {
     }
 }
    
-
-//MARK: DELEGATE
+//MARK: Métodos de delegate
 extension BreedsTableViewController: UITableViewDelegate {
     
     //Abre a tela de detalhes do cachorro selecionado
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
- //       let localRepository = LocalRepository()
-//        let detail = DetailViewController(localRepository: localRepository)
         let detail = DetailViewController()
         detail.touchedDog = self.arrayOfDogs[indexPath.row]
         self.navigationController?.pushViewController(detail, animated: true)
