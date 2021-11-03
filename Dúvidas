@@ -1,9 +1,0 @@
-alta implementar:
-
-- persistencia de dados
-- em detailview controller, na célula para adicionar aos favoritos, colocar um botao on/off para salvar
-    * todos devem ficar como padrao em off
-    * se mudar para on salvar pros favoritos e adicionar um alerta com o aviso que foi adicionado
-    * se mudar pra off, retirar dos favoritos e adicionar um alerta com o aviso que foi retirado
-
-

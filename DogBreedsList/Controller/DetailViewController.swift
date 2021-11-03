@@ -19,7 +19,7 @@ class DetailViewController: UIViewController {
         table.dataSource = self
         table.delegate = self
         table.separatorStyle = .none
-        table.backgroundColor = .clear
+        table.backgroundColor = .mWhite()
         
         return table
     }()
@@ -100,6 +100,7 @@ extension DetailViewController: UITableViewDataSource {
             guard let urlString = touchedDog.image?.url else { return UITableViewCell() }
             guard let url = URL(string: urlString) else { return UITableViewCell() }
             cellImage.setImage(url: url)
+            self.view.backgroundColor = .mWhite()
             return cellImage
         default:
             return UITableViewCell()

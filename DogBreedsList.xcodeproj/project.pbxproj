@@ -85,7 +85,6 @@
 		40B4CDC3272CAD34001E4620 /* ImageDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewCell.swift; sourceTree = "<group>"; };
 		40F057E027301FE500B20D99 /* DataBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseController.swift; sourceTree = "<group>"; };
 		40F057E2273031A400B20D99 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		40F057E427308DA500B20D99 /* Dúvidas */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Dúvidas"; sourceTree = "<group>"; };
 		40F057E52730A33100B20D99 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
 		40F057E82730B7ED00B20D99 /* ApiSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiSpy.swift; sourceTree = "<group>"; };
 		40F057EA27317FCE00B20D99 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -122,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				40F057E2273031A400B20D99 /* README.md */,
-				40F057E427308DA500B20D99 /* Dúvidas */,
 				40B4CD59272C6785001E4620 /* DogBreedsList */,
 				40B4CD73272C6789001E4620 /* DogBreedsListTests */,
 				40B4CD7D272C6789001E4620 /* DogBreedsListUITests */,
@@ -637,7 +635,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DogBreedsList.app/DogBreedsList";
 			};
 			name = Debug;
@@ -661,7 +659,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DogBreedsList.app/DogBreedsList";
 			};
 			name = Release;
